@@ -5,8 +5,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "onenord_light",
-  theme_toggle = { "onenord_light", "onenord_light" },
+  theme = "github_light",
+  theme_toggle = { "github_dark", "github_light" },
   changed_themes = {
     onenord_light = {
       base_30 = {
@@ -16,15 +16,12 @@ M.base46 = {
     },
     onenord = {
       base_16 = {
-        base0B = "#64ff52"
+        base0B = "#64ff52",
       },
     },
   },
-
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+  hl_override = {
+  },
 }
 
 M.nvdash = {

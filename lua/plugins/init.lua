@@ -58,6 +58,12 @@ return {
       view = {
         width = 44,
       },
+      renderer = {
+        root_folder_label = function(path)
+          local project_name = vim.fn.fnamemodify(path, ":t")
+          return "📁 " .. project_name
+        end,
+      },
     },
   },
   {
@@ -90,11 +96,11 @@ return {
         org_capture_templates = {
           d = {
             description = "日记",
-            target = "~/orgfiles/daily/%<%Y-%m-%d>.org",
+            target = "~/orgfiles/daily/%<%Y>/%<%m>.org",
           },
           w = {
             description = "周记",
-            target = "~/orgfiles/weekly/%<%Y>/%<%m>/week-%V.org",
+            target = "~/orgfiles/weekly/%<%Y>/%<%m>/week-%<%Y-%m-%d>.org",
           },
           m = {
             description = "月记",
