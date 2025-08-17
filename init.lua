@@ -29,6 +29,16 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+if vim.g.neovide then
+  vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h14"
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "rescript",
+    callback = function()
+      vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h14"
+    end,
+  })
+end
+
 require "options"
 require "autocmds"
 
