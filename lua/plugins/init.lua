@@ -51,6 +51,9 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = {
+      filters = {
+        dotfiles = true,
+      },
       update_focused_file = {
         enable = false,
         update_root = false,
