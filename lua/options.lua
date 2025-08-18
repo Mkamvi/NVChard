@@ -24,6 +24,7 @@ local powershell_options = {
 }
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
+  vim.cmd('language zh_CN.utf8')
   for option, value in pairs(powershell_options) do
     vim.opt[option] = value
   end
