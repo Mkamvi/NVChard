@@ -64,9 +64,15 @@ return {
       renderer = {
         root_folder_label = function(path)
           local project_name = vim.fn.fnamemodify(path, ":t")
-          return "📁 " .. project_name
+          return "🥛 " .. project_name
         end,
       },
+      on_attach = function(bufnr)
+        local api = require "nvim-tree.api"
+        api.config.mappings.default_on_attach(bufnr)
+        -- 移除 Ctrl-e 映射
+        vim.keymap.del("n", "<C-e>", { buffer = bufnr })
+      end,
     },
   },
   {
