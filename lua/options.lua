@@ -13,7 +13,6 @@ vim.g.neovide_scale_factor = 0.8
 vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_hide_mouse_when_typing = true
 
-vim.g.vscode_snippets_path = "~/.config/nvim/.vsnip"
 
 -- 使用PowerShell
 local powershell_options = {
