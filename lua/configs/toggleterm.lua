@@ -2,7 +2,16 @@ require("toggleterm").setup({
 	-- size can be a number or function which is passed the current terminal
 	size = 30,
 	open_mapping = [[<c-\>]],
-	on_open = function() end, -- function to run when the terminal opens
+	on_open = function(term)
+    -- 在终端模式（t模式）下，按 Ctrl + g 切换到 Normal 模式
+    vim.api.nvim_buf_set_keymap(
+      term.bufnr,    -- 当前终端缓冲区
+      "t",           -- 模式：终端模式（Terminal mode）
+      "<C-g>",       -- 触发快捷键：Ctrl + g
+      [[<C-\><C-n>]], -- 执行的命令：切换到 Normal 模式
+      { noremap = true, silent = true }  -- 无递归映射，静默执行
+    )
+  end, -- function to run when the terminal opens
 	on_close = function() end, -- function to run when the terminal closes
 	on_stdout = function() end, -- callback for processing output on stdout
 	on_stderr = function() end, -- callback for processing output on stderr
