@@ -7,6 +7,11 @@ vim.filetype.add({
     rtsx = "typescriptreact",
   },
 })
+vim.filetype.add({
+  extension = {
+    swig = "html",
+  },
+})
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
