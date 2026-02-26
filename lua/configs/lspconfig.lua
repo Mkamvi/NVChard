@@ -25,17 +25,17 @@ local on_attach = function(client, bufnr)
 end
 
 -- 前端 LSP 服务器列表
-local servers = { 
-  "html", 
+local servers = {
+  "html",
   "cssls",
   "ts_ls", -- 替换 tsserver
   "volar",
   "svelte",
   "astro",
-  "eslint",
+  -- "eslint", -- 禁用 eslint LSP，避免 Node/ESLint 报错打扰
   "jsonls",
   "tailwindcss",
-  "emmet_ls"
+  "emmet_ls",
 }
 
 -- 配置每个服务器
@@ -65,10 +65,10 @@ vim.lsp.config("astro", {
   on_attach = on_attach,
 })
 
-vim.lsp.config("eslint", {
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+-- vim.lsp.config("eslint", {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
 vim.lsp.config("jsonls", {
   capabilities = capabilities,

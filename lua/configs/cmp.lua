@@ -1,5 +1,6 @@
-local cmp = require('cmp')
-local luasnip = require('luasnip')
+local cmp = require "cmp"
+local luasnip = require "luasnip"
+local lspkind_icons = require "nvchad.icons.lspkind"
 
 cmp.setup({
   snippet = {
@@ -40,12 +41,13 @@ cmp.setup({
   }),
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', require('nvchad.icons').lspkind[vim_item.kind], vim_item.kind)
+      local icon = lspkind_icons[vim_item.kind] or ""
+      vim_item.kind = string.format("%s %s", icon, vim_item.kind)
       vim_item.menu = ({
-        nvim_lsp = '[LSP]',
-        luasnip = '[Snippet]',
-        buffer = '[Buffer]',
-        path = '[Path]',
+        nvim_lsp = "[LSP]",
+        luasnip = "[Snippet]",
+        buffer = "[Buffer]",
+        path = "[Path]",
       })[entry.source.name]
       return vim_item
     end,
