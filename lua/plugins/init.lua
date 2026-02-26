@@ -1,11 +1,11 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- 保存时格式化
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
+  -- LSP 相关
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,11 +13,128 @@ return {
     end,
   },
   {
-    "nvzone/typr",
-    dependencies = "nvzone/volt",
-    opts = {},
-    cmd = { "Typr", "TyprStats" },
+    "williamboman/mason.nvim",
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "typescript-language-server",
+        "css-lsp",
+        "html-lsp",
+        "eslint-lsp",
+        "json-lsp",
+        "tailwindcss-language-server",
+        "emmet-ls",
+        "vue-language-server",
+        "svelte-language-server",
+        "astro-language-server",
+      },
+    },
   },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup()
+    end,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("null-ls").setup()
+    end,
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    config = function()
+      require("lspsaga").setup()
+    end,
+  },
+
+
+  -- 自动补全
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
+    },
+    config = function()
+      require("configs.cmp")
+    end,
+  },
+
+  -- 语法高亮
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("configs.treesitter")
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
+
+  -- 前端专属
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
+  {
+    "mattn/emmet-vim",
+  },
+  {
+    "AndrewRadev/tagalong.vim",
+  },
+  {
+    "axelvc/template-string.nvim",
+    config = function()
+      require("template-string").setup()
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+  },
+
+  -- 调试
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("configs.dap")
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require("dapui").setup()
+    end,
+  },
+  {
+    "mxsdev/nvim-dap-vscode-js",
+    config = function()
+      require("dap-vscode-js").setup()
+    end,
+  },
+
+  -- 其他工具
   {
     "akinsho/toggleterm.nvim",
     version = "*",
@@ -76,58 +193,17 @@ return {
     },
   },
   {
-    "akinsho/org-bullets.nvim",
-    lazy = false,
+    "folke/todo-comments.nvim",
     config = function()
-      require("org-bullets").setup()
+      require("todo-comments").setup()
     end,
   },
   {
-    "nvim-orgmode/orgmode",
-    event = "VeryLazy",
-    ft = { "org" },
+    "folke/zen-mode.nvim",
     config = function()
-      local org = require "orgmode"
-      -- org.setup_ts_grammar()
-      -- Setup orgmode
-      org.setup {
-        org_agenda_files = "~/orgfiles/**/*",
-        org_default_notes_file = "~/orgfiles/refile.org",
-        org_todo_keywords = {
-          "TODO",
-          "IN-PROGRESS",
-          "|",
-          "DONE",
-          "CANCELLED",
-        },
-        mappings = {
-          org = {
-            org_toggle_checkbox = "<Leader>o<Space>",
-          },
-        },
-        win_split_mode = "vertical",
-        org_capture_window = {
-          height = 44,
-        },
-        org_capture_templates = {
-          d = {
-            description = "日记",
-            target = "~/orgfiles/daily/%<%Y>/%<%m>.org",
-          },
-          w = {
-            description = "周记",
-            target = "~/orgfiles/weekly/%<%Y>/%<%m>/week-%<%Y-%m-%d>.org",
-          },
-          m = {
-            description = "月记",
-            target = "~/orgfiles/monthly/%<%Y>/%<%m>.org",
-          },
-        },
-      }
+      require("zen-mode").setup()
     end,
   },
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

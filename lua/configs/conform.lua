@@ -9,7 +9,9 @@ local options = {
     typescriptreact = { "prettier" },
     html = { "prettier" },
     css = { "prettier" },
+    scss = { "prettier" },
     json = { "prettier" },
+    jsonc = { "prettier" },
     yaml = { "prettier" },
     markdown = { "prettier" },
     sh = { "shfmt" },
@@ -19,15 +21,18 @@ local options = {
     c = { "clang-format" },
     cpp = { "clang-format" },
 
-    -- 可以为同一文件类型配置多个格式化器，按顺序执行
+    -- 前端框架文件类型
     vue = { "prettier", "eslint_d" },
+    svelte = { "prettier" },
+    astro = { "prettier" },
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
+  -- 保存时格式化
+  format_on_save = {
+    -- 传递给 conform.format() 的选项
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
 }
 
 return options

@@ -1,0 +1,44 @@
+# Neovim 配置目录忽略文件
+
+# 撤销文件目录
+undodir/
+
+# 日志文件
+.nvimlog
+
+# Lazy.nvim 锁定文件
+lazy-lock.json
+
+# VSCode 代码片段目录
+.vsnip/
+
+# 测试文件
+test.lua
+
+# 前端构建目录
+node_modules/
+dist/
+build/
+
+# Vim 交换文件
+*.swp
+*.swo
+
+# 编译输出
+*.pyc
+__pycache__/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器配置
+.vscode/
+.idea/
+
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
