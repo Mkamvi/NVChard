@@ -1,17 +1,17 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = ";"
 
-vim.g.vscode_snippets_path = vim.fn.fnamemodify(vim.fn.stdpath('config') .. '/.vsnip', ':p')
-vim.filetype.add({
+vim.g.vscode_snippets_path = vim.fn.fnamemodify(vim.fn.stdpath "config" .. "/.vsnip", ":p")
+vim.filetype.add {
   extension = {
     rtsx = "typescriptreact",
   },
-})
-vim.filetype.add({
+}
+vim.filetype.add {
   extension = {
     swig = "html",
   },
-})
+}
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -57,6 +57,3 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-
-
-

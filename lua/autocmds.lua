@@ -29,7 +29,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- 黑客风格的光标样式
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+    vim.opt.guicursor =
+      "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
   end,
 })
 
@@ -44,7 +45,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- vim.api.nvim_create_autocmd("BufDelete", {
 --   callback = function()
 --     local bufs = vim.t.bufs
--- 
+--
 --     if #bufs == 0 then
 --       vim.cmd "Nvdash"
 --     end
@@ -57,4 +58,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
     require("nvim-tree.api").tree.open()
   end,
 })
-
